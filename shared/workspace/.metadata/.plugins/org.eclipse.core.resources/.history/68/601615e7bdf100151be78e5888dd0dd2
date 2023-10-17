@@ -1,0 +1,33 @@
+/*
+ * Leeres EGR Projekt
+ *
+ *  Created on: 18.10.2013
+ *      Author: Coy
+ */
+
+#include <hw_types.h>
+#include <uartStdio.h>
+
+int main() {
+
+	/* Place init code here */
+	UARTprintf("Hallo");
+	UARTprintf("**********");
+	UARTPutNum(666);
+
+	//loeschen der letzten drei bits (aka. der modus am pin 2 des port 1)
+	HWREG(0x44e10000+0x8b8) &= ~((1<<0)|(1<<1)|(1<<2));
+	//setzen der letzten drei bits fuer modus = GPIO2_12
+	HWREG(0x44e10000+0x8b8) |= 0x7;
+
+	//GPIO2 auf Output Enable (GPIO_OE = 0) schalten (Bit 12 wg. GPIO2_12)
+	HWREG(0x481ac000+0x134) &= ~(1<<12);
+	//Pin auf 0 Stellen -> Strom fliesst
+	HWREG(0x481ac000+0x13c) &= ~(1<<12);
+
+	while (1)
+	{
+		/* Place main loop code here */
+	}
+	return 0;
+}

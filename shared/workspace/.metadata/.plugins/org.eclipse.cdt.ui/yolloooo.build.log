@@ -1,0 +1,6 @@
+11:21:43 **** Incremental Build of configuration Build (GNU) for project yolloooo ****
+make all 
+make: *** No rule to make target 'all'.  Stop.
+
+11:21:43 Build Finished (took 72ms)
+

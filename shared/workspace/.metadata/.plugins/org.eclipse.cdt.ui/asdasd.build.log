@@ -1,0 +1,17 @@
+10:33:29 **** Incremental Build of configuration Release for project asdasd ****
+make clean all 
+make TARGET_MODE=Debug bin
+make[1]: Entering directory '/home/egr/workspace/asdasd'
+arm-none-eabi-gcc  -mcpu=cortex-a8 -mtune=cortex-a8 -march=armv7-a -c -g -mlong-calls -fdata-sections -funsigned-char -ffunction-sections -Wall -I/home/egr/AM335X_StarterWare_02_00_01_01/include -I/home/egr/AM335X_StarterWare_02_00_01_01/include/hw -I/home/egr/AM335X_StarterWare_02_00_01_01/include/armv7a -I/home/egr/AM335X_StarterWare_02_00_01_01/include/armv7a/am335x -I/home/egr/AM335X_StarterWare_02_00_01_01/grlib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/usblib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/ipclite/include -I/home/egr/AM335X_StarterWare_02_00_01_01/nandlib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/mmcsdlib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/bootloader/include -I/home/egr/AM335X_StarterWare_02_00_01_01/third_party/fatfs/src -I/home/egr/AM335X_StarterWare_02_00_01_01/norlib/include -I"/home/egr/gcc-arm-none-eabi-4_8-2013q4/arm-none-eabi/include" -Dgcc -Dam335x -Dbeaglebone -D SUPPORT_UNALIGNED -D MMCSD -DUARTCONSOLE src/*.c
+arm-none-eabi-ld -e Entry -u Entry -u __aeabi_uidiv -u __aeabi_idiv --gc-sections -L"/home/egr/gcc-arm-none-eabi-4_8-2013q4/arm-none-eabi/lib/" -L"/home/egr/gcc-arm-none-eabi-4_8-2013q4/lib/gcc/arm-none-eabi/4.8.3/" -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/am335x/drivers/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/am335x/beaglebone/platform/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/am335x/system_config/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/am335x/ipclite/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/utils/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/am335x/usblib/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/grlib/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/nandlib/Debug -L/home/egr/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/mmcsdlib/Debug -L/Debug -o Debug/EGR_run.out -Map Debug/EGR_run.map \
+      Debug/*.o* -T linkdef.lds -ldrivers -lutils -lplatform -lsystem_config -lc -lgcc -ldrivers -lutils -lplatform -lsystem_config -lc -lgcc
+arm-none-eabi-objcopy -O binary bin//Debug/EGR_run.out \
+               bin//Debug/EGR_run.bin 
+make[1]: Leaving directory '/home/egr/workspace/asdasd'
+make TARGET_MODE=Release bin
+make[1]: Entering directory '/home/egr/workspace/asdasd'
+make[1]: 'bin' is up to date.
+make[1]: Leaving directory '/home/egr/workspace/asdasd'
+
+10:33:29 Build Finished (took 148ms)
+

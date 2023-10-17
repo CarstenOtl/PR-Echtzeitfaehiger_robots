@@ -1,0 +1,12 @@
+11:29:48 **** Incremental Build of configuration Debug for project aayolo ****
+make all 
+Building file: ../src/aayolo.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/aayolo.d" -MT"src/aayolo.o" -o "src/aayolo.o" "../src/aayolo.c"
+../src/aayolo.c:13:42: fatal error: ../02 Header und Treiber/i2c.h: No such file or directory
+compilation terminated.
+src/subdir.mk:18: recipe for target 'src/aayolo.o' failed
+make: *** [src/aayolo.o] Error 1
+
+11:29:48 Build Finished (took 77ms)
+

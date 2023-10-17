@@ -1,0 +1,7 @@
+10:06:08 **** Clean-only build of configuration Default for project I2C_test ****
+make clean clean 
+makefile:51: /home/egr/workspace/AM335X_StarterWare/build/armv7a/gcc/makedefs: No such file or directory
+make: *** No rule to make target '/home/egr/workspace/AM335X_StarterWare/build/armv7a/gcc/makedefs'.  Stop.
+
+10:06:08 Build Finished (took 90ms)
+

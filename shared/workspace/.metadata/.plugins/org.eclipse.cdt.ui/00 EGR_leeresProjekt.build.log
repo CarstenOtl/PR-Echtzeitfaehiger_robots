@@ -1,0 +1,6 @@
+14:23:53 **** Clean-only build of configuration Release for project 00 EGR_leeresProjekt ****
+make clean clean 
+make: 'clean' is up to date.
+
+14:23:54 Build Finished (took 80ms)
+

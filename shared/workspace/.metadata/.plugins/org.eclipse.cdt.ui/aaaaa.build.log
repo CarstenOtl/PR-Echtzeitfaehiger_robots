@@ -1,0 +1,17 @@
+11:10:26 **** Incremental Build of configuration Release for project aaaaa ****
+make clean all 
+make TARGET_MODE=Debug bin
+make[1]: Entering directory '/home/egr/workspace/aaaaa'
+arm-none-eabi-gcc  -mcpu=cortex-a8 -mtune=cortex-a8 -march=armv7-a -c -g -mlong-calls -fdata-sections -funsigned-char -ffunction-sections -Wall -I/home/egr/AM335X_StarterWare_02_00_01_01/include -I/home/egr/AM335X_StarterWare_02_00_01_01/include/hw -I/home/egr/AM335X_StarterWare_02_00_01_01/include/armv7a -I/home/egr/AM335X_StarterWare_02_00_01_01/include/armv7a/am335x -I/home/egr/AM335X_StarterWare_02_00_01_01/grlib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/usblib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/ipclite/include -I/home/egr/AM335X_StarterWare_02_00_01_01/nandlib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/mmcsdlib/include -I/home/egr/AM335X_StarterWare_02_00_01_01/bootloader/include -I/home/egr/AM335X_StarterWare_02_00_01_01/third_party/fatfs/src -I/home/egr/AM335X_StarterWare_02_00_01_01/norlib/include -I"/home/egr/gcc-arm-none-eabi-4_8-2013q4/arm-none-eabi/include" -Dgcc -Dam335x -Dbeaglebone -D SUPPORT_UNALIGNED -D MMCSD -DUARTCONSOLE src//*.c
+src//00 EGR_leeresProjekt.c:4:17: fatal error: i2c.h: No such file or directory
+ #include "i2c.h"
+                 ^
+compilation terminated.
+makefile:111: recipe for target 'bin' failed
+make[1]: Leaving directory '/home/egr/workspace/aaaaa'
+make[1]: *** [bin] Error 1
+make: *** [debug] Error 2
+makefile:95: recipe for target 'debug' failed
+
+11:10:26 Build Finished (took 145ms)
+

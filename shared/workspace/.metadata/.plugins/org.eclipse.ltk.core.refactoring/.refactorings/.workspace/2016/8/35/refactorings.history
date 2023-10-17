@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;00 EGR_leeresProjekt&apos; to &apos;00_EGR_leeresProjekt&apos;" description="Rename resource &apos;00 EGR_leeresProjekt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/00 EGR_leeresProjekt" name="00_EGR_leeresProjekt" stamp="1472212284385" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;01 Beispielprogramm&apos; to &apos;01_Beispielprogramm&apos;" description="Rename resource &apos;01 Beispielprogramm&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/01 Beispielprogramm" name="01_Beispielprogramm" stamp="1472212290397" updateReferences="true"/>
+</session>

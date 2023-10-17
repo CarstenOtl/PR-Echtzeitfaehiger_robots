@@ -1,0 +1,14 @@
+11:54:12 **** Build of configuration Debug for project AAAAA ****
+make all 
+Building file: /home/egr/workspace/02 Header und Treiber/Conf_mod.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"Conf_mod.d" -MT"Conf_mod.o" -o "Conf_mod.o" "/home/egr/workspace/02 Header und Treiber/Conf_mod.c"
+/home/egr/workspace/02 Header und Treiber/Conf_mod.c:11:22: fatal error: hw_types.h: No such file or directory
+ #include <hw_types.h>
+                      ^
+compilation terminated.
+subdir.mk:18: recipe for target 'Conf_mod.o' failed
+make: *** [Conf_mod.o] Error 1
+
+11:54:12 Build Finished (took 109ms)
+

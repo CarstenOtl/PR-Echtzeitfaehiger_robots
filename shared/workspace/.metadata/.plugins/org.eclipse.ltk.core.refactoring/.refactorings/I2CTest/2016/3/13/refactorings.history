@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;I2CTest/src/EGR_johannes.c&apos; to &apos;main.c&apos;" description="Rename resource &apos;EGR_johannes.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/EGR_johannes.c" name="main.c" stamp="1458823287654" updateReferences="true"/>
+</session>

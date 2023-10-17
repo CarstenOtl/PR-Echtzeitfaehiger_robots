@@ -1,0 +1,6 @@
+12:39:55 **** Clean-only build of configuration Release for project T5-Olympiade-A1 ****
+make clean clean 
+make: 'clean' is up to date.
+
+12:39:59 Build Finished (took 3s.388ms)
+

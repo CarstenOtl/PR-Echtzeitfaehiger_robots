@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;T2A2/src/00 EGR_leeresProjekt.c&apos; to &apos;T2A2.c&apos;" description="Rename resource &apos;00 EGR_leeresProjekt.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/00 EGR_leeresProjekt.c" name="T2A2.c" stamp="1458826117928" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;T2-A2/src/T2A2.c&apos; to &apos;T2-A2.c&apos;" description="Rename resource &apos;T2A2.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/T2A2.c" name="T2-A2.c" stamp="1458826450479" updateReferences="true"/>
+</session>

@@ -1,0 +1,6 @@
+12:39:52 **** Clean-only build of configuration Release for project T4-A1-3 ****
+make clean clean 
+make: 'clean' is up to date.
+
+12:39:55 Build Finished (took 2s.820ms)
+

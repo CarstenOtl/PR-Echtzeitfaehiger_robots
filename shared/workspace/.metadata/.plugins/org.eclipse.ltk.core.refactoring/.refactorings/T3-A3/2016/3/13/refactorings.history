@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;T3-A3/src/00 EGR_leeresProjekt.c&apos; to &apos;T3-A3.c&apos;" description="Rename resource &apos;00 EGR_leeresProjekt.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/00 EGR_leeresProjekt.c" name="T3-A3.c" stamp="1458826515473" updateReferences="true"/>
+</session>

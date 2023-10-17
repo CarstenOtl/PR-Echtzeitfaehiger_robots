@@ -1,0 +1,6 @@
+11:23:04 **** Build of configuration Build (GNU) for project aayollo ****
+make all 
+make: *** No rule to make target 'all'.  Stop.
+
+11:23:04 Build Finished (took 125ms)
+

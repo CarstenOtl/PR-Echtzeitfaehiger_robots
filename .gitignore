@@ -1,0 +1,5 @@
+# ignore VM stuff 
+vm/
+
+# ignore logs
+logs/
