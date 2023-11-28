@@ -1,0 +1,6 @@
+15:01:32 **** Incremental Build of configuration Release for project T2-A1 ****
+make clean all 
+Cannot run program "make": Unknown reason
+
+15:01:32 Build Finished (took 14ms)
+

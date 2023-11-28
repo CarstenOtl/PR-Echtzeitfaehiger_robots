@@ -1,0 +1,145 @@
+/* EGR */
+#include <uartStdio.h>
+#include <interrupt.h>
+#include <soc_AM335x.h>
+#include <hw_gpio_v2.h>
+#include <hw_types.h>
+#include <hw_dmtimer.h>
+#include "EGR_Cape.h"
+#include "delay_ms.h"
+#include "Conf_mod.h"
+#include "GPIO.h"
+#include <stdint.h>
+
+const unsigned int cyclesToMs = 24000 ; //24000 Mhz in ms
+const unsigned int TIMER_RESTART = 0xFFFFFFFF - 480000 ;
+unsigned int reloadTime = 0; //ms
+volatile unsigned int compareValue = 0 ; // in ms
+unsigned int OVF_EN_FLAG = 1 ;
+unsigned int MAT_EN_FLAG = 0 ;
+
+volatile int Signal = 0 ;
+
+//void myTimer2Isr(void) __attribute__((interrupt));
+
+void myTimer2Isr(){
+	unsigned int OVF_EN_FLAG = 1 ;
+	unsigned int MAT_EN_FLAG = 0 ;
+
+	if((HWREG(SOC_DMTIMER_2_REGS + DMTIMER_IRQSTATUS) & (1<<OVF_EN_FLAG)) != 0){
+//		UARTprintf("Signal im interrupt = 1 \n") ;
+		Signal = 1 ;
+
+		//write to servo
+//		EGR_PinWrite(GPIO_PORT3_PIN2_MODUL, GPIO_PORT3_PIN2, PIN_HIGH) ;
+
+		//Loeschen Interrupt
+		HWREG(SOC_DMTIMER_2_REGS + DMTIMER_IRQSTATUS) = (1<< OVF_EN_FLAG);
+	}
+	else if((HWREG(SOC_DMTIMER_2_REGS + DMTIMER_IRQSTATUS) & (1<<MAT_EN_FLAG)) != 0){
+//		UARTprintf("Signal im interrupt = 0 \n") ;
+		Signal = 0 ;
+//		UARTprintf("CompareValue: %d \n", cofzmpareValue) ;
+
+		//write to Servo
+//		EGR_PinWrite(GPIO_PORT3_PIN2_MODUL, GPIO_PORT3_PIN2, PIN_LOW) ;
+
+		//interrupt loeschen
+		HWREG(SOC_DMTIMER_2_REGS + DMTIMER_IRQSTATUS) = (1<< MAT_EN_FLAG);
+	}
+}
+
+
+int main() {
+	//Servo MUX no pullup
+	PinMuxing(CONF_PORT3_PIN2, PULL_DISABLE, 0, GPIO_MODE) ;
+
+	//Taster & Pullup
+	PinMuxing(CONF_PORT1_PIN2, 0, 1, 7) ;
+	PinMuxing(CONF_PORT1_PIN4, 0, 1, 7) ;
+	PinMuxing(CONF_PORT1_PIN6, 0, 1, 7) ;
+
+	//Taster Als Input
+	EGR_GPIODirSet(GPIO_PORT1_PIN2_MODUL, 12, 1) ;
+	EGR_GPIODirSet(GPIO_PORT1_PIN4_MODUL, 10, 1) ;
+	EGR_GPIODirSet(GPIO_PORT1_PIN6_MODUL, 8, 1) ;
+
+	//Servo als output
+	EGR_GPIODirSet(GPIO_PORT3_PIN2_MODUL, GPIO_PORT3_PIN2, 0) ;
+
+	//interrupt
+	//initialise interrupt
+	IntAINTCInit() ;
+
+	//global interrupt steuerung
+	IntMasterIRQEnable() ;
+
+	//lokale interrupt quelle aktivieren
+	IntSystemEnable(SYS_INT_TINT2) ;
+
+	//interrupt function
+	IntRegister(SYS_INT_TINT2, myTimer2Isr) ;
+
+	//input trigger
+	HWREG(SOC_GPIO_2_REGS + GPIO_IRQSTATUS_SET(0)) |= (1<<8) ;
+	HWREG(SOC_GPIO_2_REGS + GPIO_FALLINGDETECT) |= (1<<8) ;
+
+	//timer configuration
+	//timer auf auto-reload & compare mode enable
+	HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TCLR) |= ((1<<1)| (1<<6)) ;
+
+	//prescaler aus
+	HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TCLR) &= ~(1<<5) ;
+
+	//TIMER_RESTART = 0xFFFFFFFF - 480000 ; (480000  = 20 * 24000)
+//	UARTprintf("TIMER_START = %d \n", TIMER_START) ;
+	HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TCRR) = 0xFFFFFFFF ;
+
+	//timer reload
+	HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TLDR) = TIMER_RESTART ;
+	UARTprintf("timer_start: %u \n", (unsigned long)TIMER_RESTART) ;
+
+	//timer compare register
+	compareValue = UINT32_MAX - 480000 + (1*cyclesToMs) ; //in cycles
+	HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TMAR) = compareValue ;
+	UARTprintf("CompareValue at INIT: %u \n", (unsigned long)compareValue) ;
+
+	//timer interrupt Tigger auf Overflow und compareMATch setzen
+	HWREG(SOC_DMTIMER_2_REGS + DMTIMER_IRQENABLE_SET) |= ((1<<OVF_EN_FLAG) | (1 << MAT_EN_FLAG)) ;
+
+	//timer starten
+	HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TCLR) |= (1<<0) ;
+
+	unsigned int counter = 0 ;
+	unsigned int flg = 0;
+	while (1)
+	{
+//		UARTprintf("maining! Signal: %d", Signal) ;
+//		UARTprintf("trigger: %d \n", trigger);
+//		UARTprintf("0");
+//		compareValue = TIMER_START + (2 * cyclesToMs) ;
+//		UARTprintf("CompareValue: %u \n", compareValue);
+//		HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TMAR) = compareValue ;
+//		UARTprintf("1");
+//		delay_ms(500);
+//		compareValue = TIMER_START + (1 * cyclesToMs) ;
+//		UARTprintf("CompareValue: %d \n", compareValue);
+//		HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TMAR) = compareValue ;
+//		delay_ms(500);
+		if (counter > 300000)
+		{
+			counter = 0;
+			if (flg){
+				compareValue = 12 * cyclesToMs;
+			} else {
+				compareValue = 2 *cyclesToMs;
+			}
+			flg ^= 1 ;
+			HWREG(SOC_DMTIMER_2_REGS + DMTIMER_TMAR) = TIMER_RESTART + compareValue ;
+		}
+		UARTprintf("counter: %u", counter);
+		counter ++ ;
+		EGR_PinWrite(GPIO_PORT3_PIN2_MODUL, GPIO_PORT3_PIN2, Signal);
+	}
+	return 0;
+}
